@@ -7,12 +7,12 @@
 }
 .feedback h2 {
   max-width: fit-content;
-  color: rgb(190, 190, 248);
+  color: rgb(255, 255, 255);
 
   letter-spacing: 3px;
 }
 .icon {
-  color: rgb(127, 127, 246);
+  color: rgb(255, 255, 255);
   font-size: 37px;
 }
 
