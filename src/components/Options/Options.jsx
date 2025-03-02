@@ -1,35 +1,24 @@
 import style from "./Options.module.css";
-import Reset from "../Reset/Reset";
 
 export default function Options({
   updateFeedback,
   totalFeedbackValue,
-  feedback,
-  setFeedback,
+  handleResetFeedback,
 }) {
-  function handleResetFeedback() {
-    setFeedback({
-      good: 0,
-      neutral: 0,
-      bad: 0,
-    });
-    window.localStorage.removeItem("feedback-value");
-  }
-
   return (
     <>
       <button className={style.click} onClick={() => updateFeedback("good")}>
         Good
       </button>
       <button className={style.click} onClick={() => updateFeedback("neutral")}>
-        neutral
+        Neutral
       </button>
       <button className={style.click} onClick={() => updateFeedback("bad")}>
-        bad
+        Bad
       </button>
       {totalFeedbackValue > 0 && (
         <button className={style.click} onClick={handleResetFeedback}>
-          reset
+          Reset
         </button>
       )}
     </>

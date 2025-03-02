@@ -35,6 +35,14 @@ function App() {
     }));
   };
 
+  const handleResetFeedback = () => {
+    setFeedback({
+      good: 0,
+      neutral: 0,
+      bad: 0,
+    });
+  };
+
   let good = feedback.good;
   let neutral = feedback.neutral;
   let bad = feedback.bad;
@@ -49,6 +57,7 @@ function App() {
         totalFeedbackValue={totalFeedback}
         feedback={feedback}
         setFeedback={setFeedback}
+        handleResetFeedback={handleResetFeedback}
       />
       {totalFeedback > 0 ? (
         <Feedback
