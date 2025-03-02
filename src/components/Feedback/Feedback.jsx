@@ -13,6 +13,14 @@ export default function Feedback({
     <div className={style.feedback}>
       <ul>
         <li>
+          <h2>Good:{feedback.good}</h2>
+          <div>
+            <span>
+              <FaRegThumbsUp className={style.icon} />
+            </span>
+          </div>
+        </li>
+        <li>
           <h2>Neutral:{feedback.neutral}</h2>
           <div>
             <span>
@@ -25,14 +33,6 @@ export default function Feedback({
           <div>
             <span>
               <FaRegThumbsDown className={style.icon} />
-            </span>
-          </div>
-        </li>
-        <li>
-          <h2>Good:{feedback.good}</h2>
-          <div>
-            <span>
-              <FaRegThumbsUp className={style.icon} />
             </span>
           </div>
         </li>
