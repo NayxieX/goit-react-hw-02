@@ -1,0 +1,17 @@
+.click {
+  background-color: black;
+  color: #eee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  letter-spacing: 5px;
+  margin: 0 auto;
+  margin-bottom: 22px;
+  border: 1px solid rgb(213, 213, 218);
+  transition: transform 0.3s, background-color 0.3s;
+}
+.click:hover {
+  transform: scale(0.9);
+  background-color: rgba(35, 33, 33, 0.656);
+}
