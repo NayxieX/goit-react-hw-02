@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import "./App.css";
-import DataFeedback from "./InfoFeedback/InfoFeedback";
+import InfoFeedback from "./InfoFeedback/InfoFeedback";
 import Notification from "./Notification/Notification";
 import Description from "./Description/Description";
 import Options from "./Options/Options";
@@ -12,19 +12,20 @@ function App() {
     try {
       const dataLocalStorage = window.localStorage.getItem(LS_KEY);
       return dataLocalStorage === null
-        ? DataFeedback()
+        ? InfoFeedback
         : JSON.parse(dataLocalStorage);
     } catch (error) {
       console.log(error);
       return { good: 0, neutral: 0, bad: 0 };
     }
   });
+
   useEffect(() => {
     try {
       const normalizeDateInLocalStorage = JSON.stringify(feedback);
       window.localStorage.setItem(LS_KEY, normalizeDateInLocalStorage);
     } catch (error) {
-      return console.log(error);
+      console.log(error);
     }
   }, [feedback]);
 
@@ -33,6 +34,12 @@ function App() {
       ...prevState,
       [feedbackType]: (prevState[feedbackType] || 0) + 1,
     }));
+  };
+
+  const handleResetFeedback = () => {
+    const initialState = { good: 0, neutral: 0, bad: 0 };
+    setFeedback(initialState);
+    localStorage.setItem(LS_KEY, JSON.stringify(initialState));
   };
 
   let good = feedback.good;
@@ -49,6 +56,7 @@ function App() {
         totalFeedbackValue={totalFeedback}
         feedback={feedback}
         setFeedback={setFeedback}
+        handleResetFeedback={handleResetFeedback}
       />
       {totalFeedback > 0 ? (
         <Feedback

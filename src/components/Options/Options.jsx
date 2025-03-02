@@ -8,28 +8,23 @@ export default function Options({
   setFeedback,
 }) {
   function handleResetFeedback() {
-    setFeedback({
-      good: 0,
-      neutral: 0,
-      bad: 0,
-    });
+    const initialState = { good: 0, neutral: 0, bad: 0 };
+    setFeedback(initialState);
+    localStorage.setItem("feedback-value", JSON.stringify(initialState));
   }
+
   return (
     <>
       <button className={style.click} onClick={() => updateFeedback("good")}>
         Good
       </button>
       <button className={style.click} onClick={() => updateFeedback("neutral")}>
-        neutral
+        Neutral
       </button>
       <button className={style.click} onClick={() => updateFeedback("bad")}>
-        bad
+        Bad
       </button>
-      {totalFeedbackValue > 0 && (
-        <button className={style.click} onClick={handleResetFeedback}>
-          reset
-        </button>
-      )}
+      {totalFeedbackValue > 0 && <Reset onReset={handleResetFeedback} />}
     </>
   );
 }
