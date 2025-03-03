@@ -11,9 +11,9 @@ function App() {
   const [feedback, setFeedback] = useState(() => {
     try {
       const dataLocalStorage = window.localStorage.getItem(LS_KEY);
-      return dataLocalStorage === null
-        ? InfoFeedback()
-        : JSON.parse(dataLocalStorage);
+      return dataLocalStorage !== null
+        ? JSON.parse(dataLocalStorage)
+        : InfoFeedback();
     } catch (error) {
       console.log(error);
       return { good: 0, neutral: 0, bad: 0 };
